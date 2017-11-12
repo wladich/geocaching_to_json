@@ -20,7 +20,7 @@ def convert(filename):
     for placemark in root.xpath('.//Placemark'):
         name = placemark.find('name').text.strip()
         coords = placemark.xpath('.//coordinates')[0].text
-        lat, lng = map(float, coords.split(','))
+        lng, lat = map(float, coords.split(','))
         description = placemark.find('description').text
         description = html.fragment_fromstring(description, create_parent=True)
         url = description.xpath('.//a')[0].attrib['href']
